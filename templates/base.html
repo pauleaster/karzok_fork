@@ -1,0 +1,56 @@
+{% import 'macros.html' as macros -%}
+{% import 'macro_main.html' as macro_main -%}
+
+<!DOCTYPE html>
+<html lang="{{ lang | default(value="en")}}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+        {% block math %}
+        {{ macros::math() }}
+        {% endblock math %}
+        {% if config.extra.favicon %}
+            <link rel="shortcut icon" type="image/svg" href="{{ get_url(path=config.extra.favicon) }}">
+        {% endif %}
+        {% if config.extra.assets_url %}
+        <link rel="stylesheet" href="{{ config.extra.assets_url }}/main.css">
+        {% else %}
+        <link rel="stylesheet" href="{{ get_url(path='main.css') }}">
+        {% endif %}
+        <title>{% block htmltitle %} {{ config.title }}{% endblock htmltitle %}</title>
+        {% if config.extra.localcdn %}
+        <link rel="stylesheet" href="{{ get_url(path='normalize.css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ get_url(path='@fontsource/courier-prime/400.css') }}">
+        <link rel="stylesheet" href="{{ get_url(path='@fontsource/inter/400.css') }}">
+        <link rel="stylesheet" href="{{ get_url(path='@fontsource/inter/700.css') }}">
+        <link rel="stylesheet" href="{{ get_url(path='@fontsource/jetbrains-mono/400.css') }}">
+        {% else %}
+        {% set cdnurl = config.extra.cdnurl | default(value="https://cdn.jsdelivr.net/npm/") %}
+        <link rel="stylesheet" href="{{ cdnurl | safe }}normalize.css/normalize.css">
+
+        <link rel="stylesheet" href="{{cdnurl | safe }}@fontsource/courier-prime/400.css">
+        <link rel="stylesheet" href="{{cdnurl | safe }}@fontsource/inter/400.css">
+        <link rel="stylesheet" href="{{cdnurl | safe }}@fontsource/inter/700.css">
+        <link rel="stylesheet" href="{{cdnurl | safe }}@fontsource/jetbrains-mono/400.css">
+        {% endif %}
+
+    {% if config.generate_rss %}
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path='rss.xml') }}">
+    {% endif %}
+</head>
+<body>
+    {% block header%}
+        {{ macro_main::header(current_url=current_url) }}
+    {% endblock header%}
+    {% block content %}
+    {% endblock content %}
+    {% block footer %}
+        {{ macro_main::footer() }}
+    {% endblock footer%}
+    <script src="{{ get_url(path='helpers/dark-light-switcher.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+# Change to you title
+title = "Karzok"
+
+base_url = "https://fmatch.org/karzok"
+
+default_language = "en"
+
+build_search_index = false
+
+compile_sass = true
+
+taxonomies = [
+    {name = "authors"},
+]
+
+[slugify]
+paths = "on"
+
+[markdown]
+highlight_code = true
+highlight_theme = "base16-ocean-dark"
+
+render_emoji = true
+
+[extra]
+# github
+version = "https://api.github.com/repos/kogeletey/karzok/releases/latest"
+cdnurl = "https://get.re128.net/"
+
+localcdn = false
+
+
+show_word_count = true
+show_reading_time = true
+relative_path = true
+
+[[extra.header]]
+text = "Meta"
+link = "$base_url/meta"
+
+[[extra.menu]]
+text = "Install"
+link = "$base_url/install"
+
+[[extra.menu]]
+text = "Configure"
+link = "$base_url/configure"
+
+[[extra.menu]]
+text = "Contribute"
+link = "$base_url/contribute"
+
