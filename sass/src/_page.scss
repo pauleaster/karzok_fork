@@ -63,7 +63,7 @@
     }
     pre {
         margin-top: 1rem;
-        background-color: #f6f7f6 !important;
+        background-color: #f6f7f6 ;
         box-shadow: 2px solid;
         padding: 8px;
         overflow-x: auto;
@@ -72,7 +72,7 @@
         font-family: 'JetBrains Mono';
         color: $black;
         font-size: 85%;
-        background-color: transparent !important;
+        background-color: transparent ;
     }
     ol {
         list-style-type: decimal;
@@ -105,7 +105,7 @@
         padding-right: 1em;
     }
     &-no-padding {
-        padding-right: 0 !important;
+        padding-right: 0 ;
     }
     &-string {
         padding-top: 1em;
